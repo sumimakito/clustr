@@ -1,0 +1,14 @@
+{
+  "extends": ["@tsconfig/strictest/tsconfig"],
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022", "dom"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true
+  },
+  "exclude": ["dist", "node_modules"]
+}

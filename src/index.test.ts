@@ -16,11 +16,11 @@ function createStream(text: string) {
 
 it('handles simple ascii text', async () => {
   const stream = createStream('Hello, world!')
-  const result = readGraphemeClusters(stream)
+  const iterator = readGraphemeClusters(stream)
 
   const expectedClusters = ['H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!']
   let i = 0
-  for await (const cluster of result) {
+  for await (const cluster of iterator) {
     expect(cluster).toBe(expectedClusters[i++])
   }
   expect(i).toBe(expectedClusters.length)
@@ -28,7 +28,7 @@ it('handles simple ascii text', async () => {
 
 it('handles emoji grapheme clusters', async () => {
   const stream = createStream('👩‍👩‍👦‍👦0️⃣1️⃣2️⃣3️⃣4️⃣👨‍🚀👩‍🚀')
-  const result = readGraphemeClusters(stream)
+  const iterator = readGraphemeClusters(stream)
 
   const expectedClusters = [
     '👩‍👩‍👦‍👦',
@@ -41,7 +41,7 @@ it('handles emoji grapheme clusters', async () => {
     '👩‍🚀',
   ]
   let i = 0
-  for await (const cluster of result) {
+  for await (const cluster of iterator) {
     expect(cluster).toBe(expectedClusters[i++])
   }
   expect(i).toBe(expectedClusters.length)
@@ -49,7 +49,7 @@ it('handles emoji grapheme clusters', async () => {
 
 it('handles complex emoji with modifiers', async () => {
   const stream = createStream('👨🏻‍👩🏻‍👧🏻‍👦🏻0️⃣1️⃣2️⃣3️⃣4️⃣👨‍🚀👩‍🚀')
-  const result = readGraphemeClusters(stream)
+  const iterator = readGraphemeClusters(stream)
 
   const expectedClusters = [
     '👨🏻‍👩🏻‍👧🏻‍👦🏻',
@@ -62,7 +62,7 @@ it('handles complex emoji with modifiers', async () => {
     '👩‍🚀',
   ]
   let i = 0
-  for await (const cluster of result) {
+  for await (const cluster of iterator) {
     expect(cluster).toBe(expectedClusters[i++])
   }
   expect(i).toBe(expectedClusters.length)
@@ -71,10 +71,11 @@ it('handles complex emoji with modifiers', async () => {
 it('handles language-specific clusters', async () => {
   // Source: https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
   const stream = createStream('g̈각நிกำषिक्षि') // cSpell:disable-line
-  const result = readGraphemeClusters(stream)
+  const iterator = readGraphemeClusters(stream)
+
   const expectedClusters = ['g̈', '각', 'நி', 'กำ', 'षि', 'क्षि'] // cSpell:disable-line
   let i = 0
-  for await (const cluster of result) {
+  for await (const cluster of iterator) {
     expect(cluster).toBe(expectedClusters[i++])
   }
   expect(i).toBe(expectedClusters.length)
@@ -83,12 +84,12 @@ it('handles language-specific clusters', async () => {
 it('aborts the operation', async () => {
   const controller = new AbortController()
   const stream = createStream('Hello, world!')
-  const result = readGraphemeClusters(stream, { signal: controller.signal })
+  const iterator = readGraphemeClusters(stream, { signal: controller.signal })
 
   const expectedClusters = ['H', 'e', 'l']
   let i = 0
   try {
-    for await (const cluster of result) {
+    for await (const cluster of iterator) {
       expect(cluster).toBe(expectedClusters[i++])
       if (i === 3) {
         controller.abort()

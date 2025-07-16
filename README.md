@@ -76,7 +76,7 @@ for await (const cluster of readGraphemeClusters(reader)) {
 
 ## Use case
 
-Sometimes, you may want the message to be displayed in a stream-like manner with fancy animations in your chat bubble, like this:
+Sometimes, you may want the message to appear in a stream-like manner with fancy animations in your chat bubble, like this:
 
 ![](docs/airi-chat-bubble.gif)
 

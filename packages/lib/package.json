@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.3",
   "packageManager": "pnpm@10.12.4",
-  "description": "Safely extract UTF-8 grapheme clusters from byte streams",
+  "description": "Stream UTF-8 bytes and read grapheme clusters safely",
   "author": "Makito <i@maki.to>",
   "license": "MIT",
   "repository": {

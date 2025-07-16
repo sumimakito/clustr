@@ -3,6 +3,7 @@ version: "0.2"
 ignorePaths:
   - node_modules
 words:
+  - AIRI
   - animejs
   - antfu
   - Azeret

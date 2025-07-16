@@ -74,6 +74,14 @@ for await (const cluster of readGraphemeClusters(reader)) {
 }
 ```
 
+## Use case
+
+Sometimes, you may want the message to be displayed in a stream-like manner with fancy animations in your chat bubble, like this:
+
+![](docs/airi-chat-bubble.gif)
+
+We built many UI components at [Project AIRI](https://github.com/moeru-ai/airi), where we use this library to safely split the elements to be animated in the chat bubble shown above. You should definitely check it out if you are also interested in meeting an AI soulmate.
+
 ## License
 
 ```

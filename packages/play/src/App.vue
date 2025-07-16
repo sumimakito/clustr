@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { animate } from 'animejs'
 import { readGraphemeClusters } from 'clustr'
-import { ref, shallowRef, TransitionGroup } from 'vue'
+import { ref, shallowRef } from 'vue'
 
 interface InputCluster {
   index: number
@@ -9,7 +9,7 @@ interface InputCluster {
   bytes: Uint8Array
 }
 
-const inputText = ref('🧑‍🧒🤾‍♀️🚵👨‍🚀👩‍🚀g̈நிกำषिक्षि') // cSpell:disable-line
+const inputText = ref('🧑‍🧒🤾‍♀️🚵👨‍🚀👩‍🚀💇‍♀️🚵‍♂️🚵‍♀️👩‍👩‍👧‍👧') // cSpell:disable-line
 const textBytes = ref<Uint8Array>()
 const clusters = ref<string[]>([])
 const inputClusters = ref<InputCluster[]>([])
@@ -29,9 +29,13 @@ function encodeText() {
   inputClusters.value = [...segmenter.segment(inputText.value)].map<InputCluster>(segment => ({
     index: segment.index,
     text: segment.segment,
-    bytes: bytes.subarray(segment.index, segment.index + segment.segment.length),
+    bytes: new TextEncoder().encode(segment.segment),
   }))
   textBytes.value = bytes
+}
+
+function getHexPresentation(s: string) {
+  return [...new TextEncoder().encode(s)].map<string>(b => b.toString(16).padStart(2, '0')).join(' ')
 }
 
 async function stream() {
@@ -74,13 +78,13 @@ async function stream() {
       },
     }).getReader(),
     { signal: ac.signal },
-  )
+  );
 
-  // (async () => {
-  for await (const cluster of iterator) {
-    clusters.value.push(cluster)
-  }
-  // })()
+  (async () => {
+    for await (const cluster of iterator) {
+      clusters.value.push(cluster)
+    }
+  })()
 }
 </script>
 
@@ -140,10 +144,11 @@ async function stream() {
         }"
       >
         <div
-          flex="~ col gap-4 items-start"
-          w-full bg-light-50 rounded-lg
-          shadow="lg blue/10"
-          p-4 z-4
+          key="input"
+          flex="~ col gap-4 items-start" w-full bg-light-50
+          rounded-lg
+          shadow="lg blue/10" p-4
+          z-4
           b="~ blue-100 2"
         >
           <div font-bold>
@@ -166,12 +171,13 @@ async function stream() {
         </div>
 
         <div
-          v-if="textBytes && textBytes.length > 0" flex="~ col items-start gap-4"
+          v-if="textBytes && textBytes.length > 0" key="bytes"
+          flex="~ col items-start gap-4"
           bg-light-100
           rounded="lb-lg rb-lg"
           shadow="lg blue/10"
-          b="~ blue-100 2"
-          px-4 pt-6 pb-4 mx-2 mt--2 z-2
+          b="~ blue-100 2" px-4 pt-6 pb-4 mx-2 mt--2
+          z-2
         >
           <div font-bold>
             Bytes
@@ -186,14 +192,15 @@ async function stream() {
                 v-for="(byte, bi) in cluster.bytes"
                 :key="bi"
                 px-1 py-0.5 rounded-lg
-                b="~ blue-100 2"
+                b="~ blue-100 2 dashed"
                 :class="[{
                   'bg-blue-100': sendIndex >= cluster.index + bi,
                 }]"
               >
                 {{ byte.toString(16).toUpperCase().padStart(2, '0') }}
               </div>
-              <span op-70>{{ cluster.text }}</span>
+              <span>{{ cluster.text }}</span>
+              <span op-30><div i-ri-contract-left-line text-sm /></span>
             </template>
           </div>
 
@@ -209,11 +216,12 @@ async function stream() {
 
         <div
           v-if="clusters.length > 0"
+          key="output"
           flex="~ col gap-2 items-start"
           bg-light-50
           rounded="lb-lg rb-lg"
-          b="~ blue-100 2"
-          px-4 pt-6 pb-4 mx-4 mt--2 z-1
+          b="~ blue-100 2" px-4 pt-6 pb-4 mx-4 mt--2
+          z-1
           shadow="lg blue/10"
         >
           <div font-bold>

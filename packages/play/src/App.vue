@@ -107,10 +107,10 @@ async function stream() {
 
         <div flex="~ row gap-2 items-center">
           <a href="https://www.npmjs.com/package/clustr" target="_blank">
-            <div i-ri-npmjs-fill text-4xl />
+            <div i-ri-npmjs-fill text-4xl op-50 transition-opacity hover:op-100 />
           </a>
           <a href="https://github.com/sumimakito/clustr" target="_blank">
-            <div i-ri-github-fill text-4xl />
+            <div i-ri-github-fill text-4xl op-50 transition-opacity hover:op-100 />
           </a>
         </div>
       </div>

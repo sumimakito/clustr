@@ -1,0 +1,27 @@
+{
+  "name": "clustr-play",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@iconify-json/ri": "^1.2.5",
+    "@unocss/preset-web-fonts": "^66.3.3",
+    "@unocss/reset": "^66.3.3",
+    "@vitejs/plugin-vue": "catalog:",
+    "@vue/tsconfig": "catalog:",
+    "animejs": "^4.0.2",
+    "clustr": "workspace:^",
+    "typescript": "catalog:",
+    "unocss": "^66.3.3",
+    "vite": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

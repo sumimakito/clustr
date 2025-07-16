@@ -1,0 +1,35 @@
+{
+  "name": "clustr",
+  "type": "module",
+  "version": "0.0.3",
+  "packageManager": "pnpm@10.12.4",
+  "description": "Safely extract UTF-8 grapheme clusters from byte streams",
+  "author": "Makito <i@maki.to>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumimakito/clustr.git"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=22.10.0"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "lint": "NODE_OPTIONS='--experimental-strip-types' eslint --flag unstable_native_nodejs_ts_config",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@tsconfig/strictest": "catalog:",
+    "@types/node": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

@@ -13,4 +13,5 @@ words:
   - preflights
   - tsdown
   - vitejs
+  - vitepress
   - vitest

@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "pnpm -r run build",
-    "build:play": "pnpm -F ./packages/play run build",
+    "build:play": "pnpm -F ./packages/play... run build",
     "build:lib": "pnpm -F ./packages/lib run build",
     "test": "pnpm -r run test",
     "dev": "pnpm -F ./packages/play run dev"

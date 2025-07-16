@@ -3,13 +3,17 @@ import { expect, it } from 'vitest'
 import { readGraphemeClusters } from '.'
 
 function createStream(text: string) {
+  const bytes = new TextEncoder().encode(text)
+  let pullIndex = 0
+
   return new ReadableStream<Uint8Array>({
-    start(controller) {
-      const bytes = new TextEncoder().encode(text)
-      for (const byte of bytes) {
-        controller.enqueue(new Uint8Array([byte]))
+    pull(controller) {
+      if (pullIndex < bytes.length) {
+        controller.enqueue(new Uint8Array([bytes[pullIndex++]!]))
       }
-      controller.close()
+      else {
+        controller.close()
+      }
     },
   })
 }

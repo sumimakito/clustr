@@ -3,6 +3,13 @@ version: "0.2"
 ignorePaths:
   - node_modules
 words:
+  - animejs
+  - antfu
+  - Azeret
   - clustr
   - esbuild
+  - Fira
+  - preflights
   - tsdown
+  - vitejs
+  - vitest

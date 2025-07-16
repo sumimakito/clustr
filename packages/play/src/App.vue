@@ -34,10 +34,6 @@ function encodeText() {
   textBytes.value = bytes
 }
 
-function getHexPresentation(s: string) {
-  return [...new TextEncoder().encode(s)].map<string>(b => b.toString(16).padStart(2, '0')).join(' ')
-}
-
 async function stream() {
   abortController.value?.abort()
   const ac = new AbortController()

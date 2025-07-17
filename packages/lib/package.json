@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "tsdown",
-    "lint": "NODE_OPTIONS='--experimental-strip-types' eslint --flag unstable_native_nodejs_ts_config",
+    "lint": "eslint",
     "test": "vitest"
   },
   "devDependencies": {

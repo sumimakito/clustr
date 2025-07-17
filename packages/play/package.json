@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
     "build": "vue-tsc -b && vite build",
+    "dev": "vite",
+    "lint": "eslint",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -8,26 +8,43 @@ on:
       - main
 
 jobs:
-  build:
+  check:
+    name: Check Source Code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up PNPM
+      - name: Install pnpm
         uses: pnpm/action-setup@v4
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
+      - name: Install asdf and tools
+        uses: asdf-vm/actions/install@v4
 
       - name: Install dependencies
         run: pnpm install
 
+      - name: Run cSpell
+        uses: streetsidesoftware/cspell-action@v7
+
       - name: Lint
         run: pnpm run lint
+
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install asdf and tools
+        uses: asdf-vm/actions/install@v4
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Build
         run: pnpm run build

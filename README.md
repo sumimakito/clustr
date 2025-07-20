@@ -6,7 +6,7 @@ Stream UTF-8 bytes and read grapheme clusters safely
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4a46ffaa-fe7e-4bd4-add7-9dc892370f1e/deploy-status)](https://app.netlify.com/projects/try-clustr/deploys) [![NPM Version](https://img.shields.io/npm/v/clustr?style=flat)](https://www.npmjs.com/package/clustr)
 
-[Try Cluster](https://try-clustr.netlify.app/)
+[Try Clustr](https://try-clustr.netlify.app/)
 
 </div>
 

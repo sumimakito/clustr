@@ -15,7 +15,8 @@
     "build:lib": "pnpm -F {./packages/lib} run build",
     "build:play": "pnpm -F {./packages/play}... run build",
     "dev": "pnpm -F {./packages/play} run dev",
-    "lint": "pnpm -r run lint",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache . --fix",
     "test": "pnpm -r run test"
   },
   "devDependencies": {

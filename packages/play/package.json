@@ -6,7 +6,8 @@
   "scripts": {
     "build": "vue-tsc -b && vite build",
     "dev": "vite",
-    "lint": "eslint",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache . --fix",
     "preview": "vite preview"
   },
   "dependencies": {

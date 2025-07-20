@@ -22,7 +22,8 @@
   },
   "scripts": {
     "build": "tsdown",
-    "lint": "eslint",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache . --fix",
     "test": "vitest"
   },
   "devDependencies": {

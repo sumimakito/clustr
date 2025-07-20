@@ -20,14 +20,19 @@ jobs:
       - name: Install asdf and tools
         uses: asdf-vm/actions/install@v4
 
+      - name: Inspect Node.js
+        run: |
+          which node
+          node --version
+
       - name: Install dependencies
-        run: asdf exec pnpm install
+        run: pnpm install
 
       - name: Spellcheck
-        run: asdf exec pnpm run spellcheck
+        run: pnpm run spellcheck
 
       - name: Lint
-        run: asdf exec pnpm run lint
+        run: pnpm run lint
 
   build:
     name: Build and test
@@ -42,11 +47,16 @@ jobs:
       - name: Install asdf and tools
         uses: asdf-vm/actions/install@v4
 
+      - name: Inspect Node.js
+        run: |
+          which node
+          node --version
+
       - name: Install dependencies
-        run: asdf exec pnpm install
+        run: pnpm install
 
       - name: Build
-        run: asdf exec pnpm run build
+        run: pnpm run build
 
       - name: Run tests
-        run: asdf exec pnpm run test
+        run: pnpm run test

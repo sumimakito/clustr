@@ -2,6 +2,8 @@ $schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell
 version: '0.2'
 ignorePaths:
   - node_modules
+  - pnpm-lock.yaml
+  - dist
 words:
   - AIRI
   - animejs
@@ -16,3 +18,10 @@ words:
   - vitejs
   - vitepress
   - vitest
+  - unocss
+  - nodenext
+  - vite
+  - npmjs
+  - Attributify
+  - Makito
+  - क्षि

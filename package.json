@@ -17,12 +17,25 @@
     "dev": "pnpm -F {./packages/play} run dev",
     "lint": "eslint --cache .",
     "lint:fix": "eslint --cache . --fix",
-    "test": "pnpm -r run test"
+    "spellcheck": "cspell .",
+    "test": "pnpm -r run test",
+    "postinstall": "npx simple-git-hooks"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
     "@tsconfig/strictest": "catalog:",
+    "cspell": "catalog:",
     "eslint": "catalog:",
+    "lint-staged": "catalog:",
+    "simple-git-hooks": "catalog:",
     "typescript": "catalog:"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --cache"
+    ]
   }
 }

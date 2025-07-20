@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: asdf exec pnpm install
 
-      - name: Run cSpell
-        uses: streetsidesoftware/cspell-action@v7
+      - name: Spellcheck
+        run: asdf exec pnpm run spellcheck
 
       - name: Lint
         run: asdf exec pnpm run lint

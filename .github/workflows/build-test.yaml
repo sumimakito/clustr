@@ -9,4 +9,4 @@ on:
 jobs:
   build-test:
     name: Build and Test
-    uses: ./.github/workflows/reusable-build.yaml
+    uses: ./.github/workflows/reusable-build-test-publish.yaml

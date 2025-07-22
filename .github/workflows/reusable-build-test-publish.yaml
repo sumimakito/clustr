@@ -1,7 +1,12 @@
-name: Build and Test
+name: Build, Test, and Publish
 
 on:
   workflow_call:
+    inputs:
+      publish:
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   check:
@@ -31,8 +36,8 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
-  build-test:
-    name: Build and test
+  build-test-publish:
+    name: Build, test, and publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -57,3 +62,9 @@ jobs:
 
       - name: Run tests
         run: pnpm run test
+
+      - if: inputs.publish
+        name: Publish package
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm run publish:lib --dry-run

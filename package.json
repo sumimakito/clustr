@@ -19,7 +19,8 @@
     "lint:fix": "eslint --cache . --fix",
     "spellcheck": "cspell .",
     "test": "pnpm -r run test",
-    "postinstall": "npx simple-git-hooks"
+    "postinstall": "npx simple-git-hooks",
+    "publish:lib": "pnpm -F {./packages/lib} publish --access public --no-git-checks --dry-run"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",

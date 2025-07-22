@@ -11,3 +11,4 @@ jobs:
     uses: ./.github/workflows/reusable-build-test-publish.yaml
     with:
       publish: true
+    secrets: inherit

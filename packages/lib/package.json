@@ -10,6 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/sumimakito/clustr.git"
   },
+  "keywords": [
+    "emoji",
+    "grapheme",
+    "grapheme cluster",
+    "readable-stream",
+    "stream",
+    "streaming",
+    "unicode",
+    "utf8",
+    "zwj-sequences"
+  ],
   "exports": {
     ".": "./dist/index.js",
     "./package.json": "./package.json"

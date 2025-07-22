@@ -5,7 +5,7 @@ export default defineConfig({
   entry: 'src/index.ts',
   exports: true,
   copy: [
-    '../../README.md',
+    { from: '../../README.md', to: 'README.md' },
   ],
-  // minify: true,
+  minify: true,
 })

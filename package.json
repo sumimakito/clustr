@@ -11,20 +11,22 @@
     "url": "git+https://github.com/sumimakito/clustr.git"
   },
   "scripts": {
-    "build": "pnpm -r run build",
     "build:lib": "pnpm -F {./packages/lib} run build",
     "build:play": "pnpm -F {./packages/play}... run build",
+    "build": "pnpm -r run build",
+    "bump:lib": "pnpm -F {./packages/lib} run bump",
     "dev": "pnpm -F {./packages/play} run dev",
-    "lint": "eslint --cache .",
     "lint:fix": "eslint --cache . --fix",
-    "spellcheck": "cspell .",
-    "test": "pnpm -r run test",
+    "lint": "eslint --cache .",
     "postinstall": "npx simple-git-hooks",
-    "publish:lib": "pnpm -F {./packages/lib} publish --access public --no-git-checks --dry-run"
+    "publish:lib": "pnpm -F {./packages/lib} publish --access public --no-git-checks --dry-run",
+    "spellcheck": "cspell .",
+    "test": "pnpm -r run test"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
     "@tsconfig/strictest": "catalog:",
+    "bumpp": "catalog:",
     "cspell": "catalog:",
     "eslint": "catalog:",
     "lint-staged": "catalog:",

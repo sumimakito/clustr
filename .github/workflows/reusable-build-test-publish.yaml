@@ -64,6 +64,10 @@ jobs:
         run: pnpm run test
 
       - if: inputs.publish
+        name: Set up NPM token
+        run: pnpm config set //registry.npmjs.org/:_authToken '${NPM_TOKEN}'
+
+      - if: inputs.publish
         name: Publish package
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

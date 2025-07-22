@@ -67,4 +67,4 @@ jobs:
         name: Publish package
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm run publish:lib --dry-run
+        run: pnpm run publish:lib

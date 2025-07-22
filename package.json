@@ -19,7 +19,7 @@
     "lint:fix": "eslint --cache . --fix",
     "lint": "eslint --cache .",
     "postinstall": "npx simple-git-hooks",
-    "publish:lib": "pnpm -F {./packages/lib} publish --access public --no-git-checks --dry-run",
+    "publish:lib": "pnpm -F {./packages/lib} publish --access public --no-git-checks",
     "spellcheck": "cspell .",
     "test": "pnpm -r run test"
   },

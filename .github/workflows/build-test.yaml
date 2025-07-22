@@ -1,0 +1,9 @@
+name: Build and Test
+
+on:
+  pull_request:
+
+jobs:
+  build-test:
+    name: Build and Test
+    uses: ./.github/workflows/reusable-build.yaml

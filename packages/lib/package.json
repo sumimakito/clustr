@@ -1,7 +1,7 @@
 {
   "name": "clustr",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "packageManager": "pnpm@10.12.4",
   "description": "Stream UTF-8 bytes and read grapheme clusters safely",
   "author": "Makito <i@maki.to>",
